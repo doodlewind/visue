@@ -1,0 +1,11 @@
+{
+  "name": "visue",
+  "description": "vue vis dev tool poc",
+  "version": "0.0.1",
+  "author": "doodlewind",
+  "bin": "./main.js",
+  "license": "MIT",
+  "dependencies": {
+    "acorn": "^4.0.11"
+  }
+}
