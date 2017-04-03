@@ -3,6 +3,7 @@
   "description": "vue vis dev tool poc",
   "version": "0.0.1",
   "author": "doodlewind",
+  "repository": "https://github.com/doodlewind/visue",
   "bin": "./main.js",
   "license": "MIT",
   "dependencies": {
