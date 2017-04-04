@@ -8,10 +8,13 @@
   "license": "MIT",
   "dependencies": {
     "acorn": "^4.0.11",
+    "cpx": "^1.5.0",
     "electron": "^1.6.2",
+    "parse5": "^3.0.2",
     "vue": "^2.1.0"
   },
   "scripts": {
+    "copy": "cpx \"./**/*\" ../visue-darwin-x64/visue.app/Contents/Resources/app --watch",
     "dev": "cross-env NODE_ENV=development webpack --config build/config.js --watch --hide-modules",
     "pre-server": "cross-env NODE_ENV=development webpack --config build/config.js --hide-modules",
     "dev-server": "npm run pre-server && webpack-dev-server --config build/config.js --hot --inline  --host 0.0.0.0",
