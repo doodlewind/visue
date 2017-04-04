@@ -122,7 +122,7 @@ function getActionsIndex () {
         node.declarations[0].init.properties.forEach(prop =>
           index.actions.push({
             name: prop.key.name,
-            stant: prop.start,
+            start: prop.start,
             end: prop.end
           }))
       }

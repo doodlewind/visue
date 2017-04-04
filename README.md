@@ -3,7 +3,7 @@ vue visualizing dev tool
 
 
 ## POC
-Run `npm link` and try `visue some/vue/project/file.js`.
+Build this repo as an electron project and start it up.
 
 
 ## Demo
