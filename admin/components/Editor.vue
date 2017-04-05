@@ -17,22 +17,63 @@
     <button @click="chooseComponent">
       Choose Vue Component
     </button>
-    <pre>
-      {{template}}
-    </pre>
+    <tree-view/>
   </div>
 </template>
 
 <script>
+import Vue from 'vue'
+import TreeNode from './TreeNode'
+
 const visue = window.visue
+
+function isLeaf (node) {
+  return node.childNodes && node.childNodes.length
+}
+
+function getLeafProps (node) {
+  return {
+    name: node.nodeName,
+    attrs: node.attrs,
+    initValue: node.value,
+    location: node.location
+  }
+}
+
+function getNodes (nodes, createElement) {
+  return nodes.map(node => {
+    return createElement(
+      // node type, supports Vue component or string
+      TreeNode,
+      // node props args, support vue args object
+      { props: getLeafProps(node) },
+      // node children, support array or string
+      // pass in child tree nodes via slot
+      isLeaf(node)
+        ? getNodes(node.childNodes, createElement)
+        : ''
+    )
+  })
+}
 
 export default {
   name: 'Editor',
+  created () {
+    const vm = this
+    Vue.component('TreeView', {
+      render (createElement) {
+        return createElement(
+          'div',
+          getNodes(vm.templateNodes, createElement)
+        )
+      }
+    })
+  },
   data () {
     return {
       actions: [],
       states: [],
-      template: ''
+      templateNodes: []
     }
   },
   methods: {
@@ -45,8 +86,7 @@ export default {
     },
     chooseComponent () {
       visue.getTemplateInfo(result => {
-        console.log(result)
-        // this.template = JSON.stringify(result, null, 2)
+        this.templateNodes = result.childNodes
       })
     }
   }
