@@ -1,4 +1,5 @@
 const parse5 = require('parse5')
+const utils = require('../utils')
 
 let ast = null
 
@@ -33,7 +34,17 @@ function getTree () {
   return traverse(tmpNode[0])
 }
 
+function setNodeText (html, location, text) {
+  return utils.replaceByIndex(
+    html,
+    text,
+    location.startOffset,
+    location.endOffset
+  )
+}
+
 module.exports = {
   parse,
-  getTree
+  getTree,
+  setNodeText
 }

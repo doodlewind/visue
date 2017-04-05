@@ -59,6 +59,9 @@ function getNodes (nodes, createElement) {
 export default {
   name: 'Editor',
   created () {
+    window.bus.$on('updateNodeValue', payload => {
+      this.templateNodes = visue.updateNodeValue(payload).childNodes
+    })
     const vm = this
     Vue.component('TreeView', {
       render (createElement) {
@@ -86,6 +89,7 @@ export default {
     },
     chooseComponent () {
       visue.getTemplateInfo(result => {
+        if (!result) return
         this.templateNodes = result.childNodes
       })
     }

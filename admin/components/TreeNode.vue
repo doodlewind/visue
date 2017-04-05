@@ -6,7 +6,9 @@
         class: <b>{{nodeClass}}</b>
       </div>
       <div v-if="hasValue">
-        value: <input v-model="value">
+        value:
+        <input v-model="value">
+        <button @click="update">update</button>
       </div>
     </div>
     <div class="slot-wrapper">
@@ -39,6 +41,14 @@ export default {
       let classAttr = this.attrs.filter(a => a.name === 'class')
       if (!classAttr.length) return null
       return classAttr[0].value
+    }
+  },
+  methods: {
+    update () {
+      window.bus.$emit('updateNodeValue', {
+        location: this.location,
+        value: this.value
+      })
     }
   }
 }

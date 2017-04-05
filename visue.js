@@ -3,6 +3,9 @@ const {dialog} = require('electron').remote
 const storeEditor = require('./core/editors/store')
 const templateEditor = require('./core/editors/template')
 
+let lastFilePath = null
+let lastFile = ''
+
 window.visue = {
   getModuleInfo (cb) {
     dialog.showOpenDialog({
@@ -30,9 +33,21 @@ window.visue = {
         cb(null)
         return
       }
-      const file = fs.readFileSync(filePath[0], 'utf-8')
-      templateEditor.parse(file)
+      lastFilePath = filePath[0]
+      lastFile = fs.readFileSync(lastFilePath, 'utf-8')
+      templateEditor.parse(lastFile)
       cb(templateEditor.getTree())
     })
+  },
+  updateNodeValue (payload) {
+    lastFile = fs.readFileSync(lastFilePath, 'utf-8')
+    let html = templateEditor.setNodeText(
+      lastFile,
+      payload.location,
+      payload.value
+    )
+    fs.writeFileSync(lastFilePath, html, 'utf-8')
+    templateEditor.parse(html)
+    return templateEditor.getTree()
   }
 }
