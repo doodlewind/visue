@@ -25,6 +25,10 @@ window.visue = {
       })
     })
   },
+  getTemplateCode (location) {
+    lastFile = fs.readFileSync(lastFilePath, 'utf-8')
+    return templateEditor.getNodeText(lastFile, location)
+  },
   getTemplateInfo (cb) {
     dialog.showOpenDialog({
       properties: ['openFile']

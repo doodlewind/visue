@@ -34,6 +34,10 @@ function getTree () {
   return traverse(tmpNode[0])
 }
 
+function getNodeText (html, location) {
+  return utils.getCode(html, location.startOffset, location.endOffset)
+}
+
 function setNodeText (html, location, text) {
   return utils.replaceByIndex(
     html,
@@ -46,5 +50,6 @@ function setNodeText (html, location, text) {
 module.exports = {
   parse,
   getTree,
+  getNodeText,
   setNodeText
 }

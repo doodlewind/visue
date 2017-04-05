@@ -36,6 +36,7 @@ function getLeafProps (node) {
     name: node.nodeName,
     attrs: node.attrs,
     initValue: node.value,
+    initCode: visue.getTemplateCode(node.location),
     location: node.location
   }
 }
