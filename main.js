@@ -21,7 +21,8 @@ function createWindow () {
     protocol: 'file:',
     slashes: true
   }))
-
+  // Add Vue dev tools
+  BrowserWindow.addDevToolsExtension('/Users/ewind/Library/Application Support/Google/Chrome/Default/Extensions/nhdogjmejiglipccpnnnanhbledajbpd/3.0.7_0')
   // Open the DevTools.
   mainWindow.webContents.openDevTools()
 

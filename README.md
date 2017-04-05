@@ -18,6 +18,7 @@ npm run dev  # run admin development build
 npm run prod # run admin production build
 ```
 
+If error occurs when opening electron app, comment out the `BrowserWindow.addDevToolsExtension` code in `main.js` and retry.
 
 ## Install
 TODO
