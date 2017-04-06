@@ -9,8 +9,13 @@
         {{state}}
       </div>
       <h4>Actions</h4>
-      <div v-for="action in actions">
-        {{action.name}}: {{action.start}}-{{action.end}}
+      <div v-for="(action, i) in actions">
+        {{action.name}}
+        <button @click="action.open = !action.open">
+          toggle
+        </button>
+        <br>
+        <pre v-show="action.open">{{action.code}}</pre>
       </div>
     </div>
     <br>
@@ -103,4 +108,6 @@ export default {
 
 .editor
   color: color-main
+pre
+  font-size: .12rem
 </style>

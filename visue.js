@@ -18,7 +18,10 @@ window.visue = {
       const file = fs.readFileSync(filePath[0], 'utf-8')
       storeEditor.parse(file)
       const states = Object.keys(storeEditor.getStateObject())
-      const actions = storeEditor.getActionsIndex().actions
+      const actions = storeEditor.getActionsIndex().actions.map(action => {
+        action.open = false
+        return action
+      })
       cb({
         states,
         actions
