@@ -10,7 +10,7 @@ Visue aims at providing a desktop app to simplity front end coding. By combining
 * Visually inspect Vuex state / actions / mutations relating to a specific component, and CRUD corresponding code to implement feature in visue GUI.
 * Visually modify backend GUI ajax code encapsulated in promise.
 
-![visue-poc](http://7u2gqx.com1.z0.glb.clouddn.com/visue-poc.png)
+![visue-poc](http://7u2gqx.com1.z0.glb.clouddn.com/visue-poc-1x.png)
 
 Visue is a dev tool rather than a framework / lib. It works like a code editor optimized for vue-based front end development workflow, all related project files can be opened and edited by visue, making it possible to opt-in your current workflow without any change to existing code.
 
